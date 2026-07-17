@@ -4,7 +4,7 @@ import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBA6LJyyM0y491LTvDJiBPUOUCfqXTpVd4",
+  apiKey: "your_api_key",
   authDomain: "greencommute-972f1.firebaseapp.com",
   projectId: "greencommute-972f1",
   storageBucket: "greencommute-972f1.firebasestorage.app",
