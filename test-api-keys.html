@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps API Key Tester</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .results {
+      margin-top: 20px;
+    }
+    .key-result {
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      border-left: 5px solid #ccc;
+      background: #f8f9fa;
+      transition: all 0.3s;
+    }
+    .key-result.testing {
+      border-left-color: #ffc107;
+      background: #fff8e1;
+      animation: pulse 1.5s infinite;
+    }
+    .key-result.active {
+      border-left-color: #28a745;
+      background: #d4edda;
+    }
+    .key-result.inactive {
+      border-left-color: #dc3545;
+      background: #f8d7da;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .key-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .key-value {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #666;
+      word-break: break-all;
+      margin-bottom: 8px;
+    }
+    .status {
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-icon {
+      font-size: 20px;
+    }
+    .summary {
+      background: #e7f3ff;
+      border: 2px solid #2196F3;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      display: none;
+    }
+    .summary h2 {
+      color: #2196F3;
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .summary-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 15px;
+    }
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+    }
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #667eea;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗺️ Google Maps API Key Tester</h1>
+    <p class="subtitle">Test multiple Google Maps API keys to check their status</p>
+    
+    <button id="testBtn" onclick="testAllKeys()">Test All API Keys</button>
+    
+    <div class="results" id="results"></div>
+    
+    <div class="summary" id="summary">
+      <h2>📊 Summary</h2>
+      <div class="summary-stats">
+        <div class="stat">
+          <div class="stat-value" id="totalKeys">0</div>
+          <div class="stat-label">Total Keys</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="activeKeys" style="color: #28a745;">0</div>
+          <div class="stat-label">Active Keys</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="inactiveKeys" style="color: #dc3545;">0</div>
+          <div class="stat-label">Inactive Keys</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const apiKeys = [
+      { name: 'PRIMARY (All APIs)', key: 'AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk' },
+      { name: '46.202.141.146 (Geocoding, Directions, Places)', key: 'AIzaSyAnlrC0_dTSs9Tn7RfNFCIFswy88esKCLU' },
+      { name: '31.97.45.168 (Geocoding, Directions, Places)', key: 'AIzaSyCYtbTMIwu3xyVizwfUP-CB0MoCxj1qpK4' },
+      { name: '31.97.37.173 (Geocoding, Directions, Places)', key: 'AIzaSyCXMuWvccDLIA4PFfjcxgvloZcQrPDDfL4' }
+    ];
+
+    async function testApiKey(apiKey) {
+      try {
+        // Test using Geocoding API
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?address=Bangalore&key=${apiKey}`
+        );
+        const data = await response.json();
+        
+        // Check if the API key is valid
+        if (data.status === 'OK') {
+          return { active: true, message: '✅ Active - Key is working' };
+        } else if (data.status === 'REQUEST_DENIED') {
+          return { active: false, message: '❌ Inactive - ' + (data.error_message || 'Request denied') };
+        } else if (data.status === 'OVER_QUERY_LIMIT') {
+          return { active: true, message: '⚠️ Active but quota exceeded' };
+        } else {
+          return { active: false, message: '❌ Inactive - Unknown error: ' + data.status };
+        }
+      } catch (error) {
+        return { active: false, message: '❌ Error - ' + error.message };
+      }
+    }
+
+    async function testAllKeys() {
+      const btn = document.getElementById('testBtn');
+      const resultsDiv = document.getElementById('results');
+      const summaryDiv = document.getElementById('summary');
+      
+      btn.disabled = true;
+      btn.textContent = 'Testing...';
+      resultsDiv.innerHTML = '';
+      summaryDiv.style.display = 'none';
+
+      let activeCount = 0;
+      let inactiveCount = 0;
+
+      // Create result elements for all keys
+      const resultElements = apiKeys.map(({ name, key }) => {
+        const div = document.createElement('div');
+        div.className = 'key-result testing';
+        div.innerHTML = `
+          <div class="key-name">${name}</div>
+          <div class="key-value">${key}</div>
+          <div class="status">
+            <span class="status-icon">⏳</span>
+            <span>Testing...</span>
+          </div>
+        `;
+        resultsDiv.appendChild(div);
+        return { div, name, key };
+      });
+
+      // Test each key
+      for (let i = 0; i < resultElements.length; i++) {
+        const { div, name, key } = resultElements[i];
+        const result = await testApiKey(key);
+        
+        div.className = `key-result ${result.active ? 'active' : 'inactive'}`;
+        div.querySelector('.status').innerHTML = `
+          <span class="status-icon">${result.active ? '✅' : '❌'}</span>
+          <span>${result.message}</span>
+        `;
+
+        if (result.active) {
+          activeCount++;
+        } else {
+          inactiveCount++;
+        }
+
+        // Small delay between requests to avoid rate limiting
+        if (i < resultElements.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      }
+
+      // Update summary
+      document.getElementById('totalKeys').textContent = apiKeys.length;
+      document.getElementById('activeKeys').textContent = activeCount;
+      document.getElementById('inactiveKeys').textContent = inactiveCount;
+      summaryDiv.style.display = 'block';
+
+      btn.disabled = false;
+      btn.textContent = 'Test Again';
+    }
+  </script>
+</body>
+</html>

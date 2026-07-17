@@ -1,0 +1,21 @@
+COPY THIS TO YOUR .env FILE
+================================
+
+Create a file named .env in the root directory and paste this:
+
+# Primary key (All APIs Enabled)
+VITE_GOOGLE_MAPS_API_KEY=AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk
+# Fallback keys (Geocoding, Directions, Places APIs)
+VITE_GOOGLE_MAPS_API_KEY_1=AIzaSyAnlrC0_dTSs9Tn7RfNFCIFswy88esKCLU
+VITE_GOOGLE_MAPS_API_KEY_2=AIzaSyCYtbTMIwu3xyVizwfUP-CB0MoCxj1qpK4
+VITE_GOOGLE_MAPS_API_KEY_3=AIzaSyCXMuWvccDLIA4PFfjcxgvloZcQrPDDfL4
+VITE_APP_NAME=GreenCommute
+VITE_APP_URL=http://localhost:8080
+
+IMPORTANT: After creating .env file, RESTART your dev server!
+
+Command: 
+1. Stop the server (Ctrl+C)
+2. Run: npm run dev
+
+The interactive map will now work on ride details pages!
