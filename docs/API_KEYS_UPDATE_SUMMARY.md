@@ -9,10 +9,10 @@ All Google Maps API keys have been updated with the latest working keys.
 ## 📊 API Key Status
 
 ### Active Keys (4 Total):
-1. ✅ **AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk** - PRIMARY (All APIs Enabled)
-2. ✅ **AIzaSyAnlrC0_dTSs9Tn7RfNFCIFswy88esKCLU** - 46.202.141.146 (Geocoding, Directions, Places)
-3. ✅ **AIzaSyCYtbTMIwu3xyVizwfUP-CB0MoCxj1qpK4** - 31.97.45.168 (Geocoding, Directions, Places)
-4. ✅ **AIzaSyCXMuWvccDLIA4PFfjcxgvloZcQrPDDfL4** - 31.97.37.173 (Geocoding, Directions, Places)
+1. ✅ **'your api-key'** - PRIMARY (All APIs Enabled)
+2. ✅ **'your api-key'** - 46.202.141.146 (Geocoding, Directions, Places)
+3. ✅ **'your api-key'** - 31.97.45.168 (Geocoding, Directions, Places)
+4. ✅ **'your api-key'** - 31.97.37.173 (Geocoding, Directions, Places)
 
 ---
 
