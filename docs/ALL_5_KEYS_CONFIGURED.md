@@ -12,7 +12,7 @@ I've successfully configured **4 WORKING GOOGLE MAPS API KEYS** with automatic f
 ```env
 VITE_GOOGLE_MAPS_API_KEY='your api-key'    # PRIMARY (All APIs Enabled)
 VITE_GOOGLE_MAPS_API_KEY_1='your api-key'  # Fallback 1 (Geocoding, Directions, Places)
-VITE_GOOGLE_MAPS_API_KEY_2=AIzaSyCYtbTMIwu3xyVizwfUP-CB0MoCxj1qpK4  # Fallback 2 (Geocoding, Directions, Places)
+VITE_GOOGLE_MAPS_API_KEY_2='your api-key' # Fallback 2 (Geocoding, Directions, Places)
 VITE_GOOGLE_MAPS_API_KEY_3=AIzaSyCXMuWvccDLIA4PFfjcxgvloZcQrPDDfL4  # Fallback 3 (Geocoding, Directions, Places)
 ```
 
