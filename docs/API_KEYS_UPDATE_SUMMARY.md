@@ -44,7 +44,7 @@ Your `.env` file now contains **ALL 4 ACTIVE KEYS**:
 
 ```env
 # Primary Google Maps API Key (All APIs Enabled)
-VITE_GOOGLE_MAPS_API_KEY=AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk
+VITE_GOOGLE_MAPS_API_KEY='your api-key'
 
 # Fallback Keys (Geocoding, Directions, Places APIs)
 VITE_GOOGLE_MAPS_API_KEY_1='your api-key'
