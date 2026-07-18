@@ -48,8 +48,8 @@ VITE_GOOGLE_MAPS_API_KEY=AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk
 
 # Fallback Keys (Geocoding, Directions, Places APIs)
 VITE_GOOGLE_MAPS_API_KEY_1=AIzaSyAnlrC0_dTSs9Tn7RfNFCIFswy88esKCLU
-VITE_GOOGLE_MAPS_API_KEY_2=AIzaSyCYtbTMIwu3xyVizwfUP-CB0MoCxj1qpK4
-VITE_GOOGLE_MAPS_API_KEY_3=AIzaSyCXMuWvccDLIA4PFfjcxgvloZcQrPDDfL4
+VITE_GOOGLE_MAPS_API_KEY_2='your api-key'
+VITE_GOOGLE_MAPS_API_KEY_3=A'your api-key'
 ```
 
 **Total: 4 Active Keys with Automatic Fallback System! 🎉**
