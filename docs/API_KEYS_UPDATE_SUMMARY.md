@@ -47,7 +47,7 @@ Your `.env` file now contains **ALL 4 ACTIVE KEYS**:
 VITE_GOOGLE_MAPS_API_KEY=AIzaSyBVIHomsd90pKz-ZOky56or4ae5iOXdOgk
 
 # Fallback Keys (Geocoding, Directions, Places APIs)
-VITE_GOOGLE_MAPS_API_KEY_1=AIzaSyAnlrC0_dTSs9Tn7RfNFCIFswy88esKCLU
+VITE_GOOGLE_MAPS_API_KEY_1='your api-key'
 VITE_GOOGLE_MAPS_API_KEY_2='your api-key'
 VITE_GOOGLE_MAPS_API_KEY_3=A'your api-key'
 ```
@@ -89,7 +89,7 @@ The app has a **fallback system** that automatically switches between keys if on
 
 **Note:** Your Firebase API key is separate from Google Maps:
 
-**Current Firebase Key:** `AIzaSyBA6LJyyM0y491LTvDJiBPUOUCfqXTpVd4`
+**Current Firebase Key:** `'your Firebase-key'`
 
 This key is located in:
 - `src/lib/firebase.ts` (line 7)
