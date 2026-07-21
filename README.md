@@ -2,6 +2,7 @@
 
 ## About
 
+
 GreenCommute is an AI-powered sustainable ride-sharing platform powered by Firebase that helps reduce carbon footprints while making commuting more economical and safe.
 
 ## 🔥 Firebase Integration - COMPLETE SETUP BELOW
